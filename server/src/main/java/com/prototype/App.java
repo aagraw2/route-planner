@@ -16,6 +16,5 @@ public class App{
     @EventListener(ApplicationReadyEvent.class)
     public void doSomethingAfterStartup() {
         System.out.println("Router service started successfully.");
-
     }
 }

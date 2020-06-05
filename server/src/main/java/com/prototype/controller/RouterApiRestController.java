@@ -2,6 +2,7 @@ package main.java.com.prototype.controller;
 
 import main.java.com.prototype.constants.AppConstants;
 import main.java.com.prototype.model.Grid;
+import main.java.com.prototype.model.findRouteResponse;
 import main.java.com.prototype.service.RouterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +24,9 @@ public class RouterApiRestController {
     @RequestMapping(path = AppConstants.ADD_CUSTOMER_PATH)
     public @ResponseBody boolean addCustomer(
             @RequestParam(value="r", required = true) double r,
-            @RequestParam(value="c", required = true) double c){
-        return routerService.addCustomer(r, c);
+            @RequestParam(value="c", required = true) double c,
+            @RequestParam(value="demand", required = true) int demand){
+        return routerService.addCustomer(r, c, demand);
     }
 
     @RequestMapping(path = AppConstants.REMOVE_CUSTOMER_PATH)
@@ -54,8 +56,9 @@ public class RouterApiRestController {
     }
 
     @RequestMapping(path = AppConstants.FIND_ROUTE_PATH)
-    public @ResponseBody Grid findRoute(){
-        return routerService.findRoute();
+    public @ResponseBody findRouteResponse findRoute(
+            @RequestParam(value="method", required = true) String method) throws Exception {
+        return routerService.findRoute(method);
     }
 
     @RequestMapping(path = AppConstants.RESET_GRID_PATH)

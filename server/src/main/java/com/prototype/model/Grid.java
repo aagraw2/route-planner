@@ -27,8 +27,8 @@ public class Grid {
         return source;
     }
 
-    public boolean setSource(Node source) {
-        this.source = source;
+    public boolean setSource(double r, double c) {
+        this.source = new Node(r,c);
         return true;
     }
 
@@ -54,13 +54,15 @@ public class Grid {
         return customers;
     }
 
-    public boolean addCustomer(Node customer) {
-        this.customers.add (customer);
+    public boolean addCustomer(double r, double c, int demand) {
+
+        this.customers.add (new Node(r, c, demand));
         return true;
     }
 
-    public boolean removeCustomers(Node customer) {
-        this.customers.remove(customer);
+    public boolean removeCustomers(double r, double c) {
+        //TODO: Implement this function
+        this.customers.remove(null);
         return true;
     }
 
@@ -79,7 +81,10 @@ public class Grid {
     }
 
     public Grid resetGrid(){
-        this.grid = new Grid();
+        this.source = new Node(0,0);
+        this.customers.clear();
+        this.vehicles = 10;
+        this.vehicleCapacity = 50;
         return grid;
     }
 }

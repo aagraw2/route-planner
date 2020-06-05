@@ -6,23 +6,25 @@ public class Node{
     private int nodeId;
     private double r;
     private double c;
+    private int demand;
     private boolean isRouted;
 
     public Node(double r, double c){
-        this.nodeId=0;
         this.r = r;
         this.c = c;
     }
 
-    public Node(int nodeId, double r, double c){
-        this.nodeId=nodeId;
+    public Node(double r, double c, int demand){
         this.r = r;
         this.c = c;
+        this.demand = demand;
     }
 
     public int getNodeId() {
         return nodeId;
     }
+
+    public void setNodeId(int id){ this.nodeId = id;}
 
     public double getR() {
         return r;
@@ -38,6 +40,14 @@ public class Node{
 
     public void setC(double c) {
         this.c = c;
+    }
+
+    public int getDemand() {
+        return demand;
+    }
+
+    public void setDemand(int demand) {
+        this.demand = demand;
     }
 
     public boolean isRouted() {
